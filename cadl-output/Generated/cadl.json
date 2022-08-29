@@ -1,0 +1,14 @@
+{
+ "$id": "1",
+ "Name": "azureappconfiguration",
+ "Description": "// TODO: (miissing-service-description) Add service description",
+ "ApiVersions": [
+  "1.0"
+ ],
+ "Enums": [],
+ "Models": [],
+ "Clients": [],
+ "Auth": {
+  "$id": "2"
+ }
+}
