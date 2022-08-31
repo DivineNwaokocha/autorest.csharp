@@ -9,8 +9,8 @@
   {
    "$id": "2",
    "Name": "get_6_itemsItem",
-   "Description": "// TODO: (miissing-service-description) Add service description",
    "Namespace": "",
+   "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
     {
@@ -61,7 +61,7 @@
    "$id": "11",
    "Name": "head_6_itemsItem",
    "Namespace": "",
-   "Description": "// TODO: (miissing-service-description) Add service description",
+   "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
     {
@@ -112,7 +112,7 @@
    "$id": "20",
    "Name": "get_7_itemsItem",
    "Namespace": "",
-   "Description": "// TODO: (miissing-service-description) Add service description",
+   "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
     {
@@ -163,7 +163,7 @@
    "$id": "29",
    "Name": "head_7_itemsItem",
    "Namespace": "",
-   "Description": "// TODO: (miissing-service-description) Add service description",
+   "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
     {
@@ -214,7 +214,7 @@
    "$id": "38",
    "Name": "get_5_itemsItem",
    "Namespace": "",
-   "Description": "// TODO: (miissing-service-description) Add service description",
+   "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
     {
@@ -230,7 +230,7 @@
    "$id": "40",
    "Name": "head_5_itemsItem",
    "Namespace": "",
-   "Description": "// TODO: (miissing-service-description) Add service description",
+   "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
     {
@@ -246,7 +246,7 @@
    "$id": "42",
    "Name": "paths·18s2vl1·revisions·get·parameters·6·schema·items",
    "Namespace": "",
-   "Description": "// TODO: (miissing-service-description) Add service description",
+   "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
     {
@@ -297,7 +297,7 @@
    "$id": "51",
    "Name": "paths·eaaa80·revisions·head·parameters·6·schema·items",
    "Namespace": "",
-   "Description": "// TODO: (miissing-service-description) Add service description",
+   "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
     {
@@ -343,6 +343,319 @@
    ],
    "IsExtensible": true,
    "IsNullable": false
+  }
+ ],
+ "Models": [
+  {
+   "$id": "60",
+   "Name": "Key",
+   "Namespace": "",
+   "Description": "// TODO: (missing-description) Add description",
+   "IsNullable": false,
+   "Properties": [
+    {
+     "$id": "61",
+     "Name": "name",
+     "SerializedName": "name",
+     "Description": "",
+     "Type": {
+      "$id": "62",
+      "Name": "string",
+      "Kind": "String",
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    }
+   ]
+  },
+  {
+   "$id": "63",
+   "Name": "KeyListResult",
+   "Namespace": "",
+   "Description": "The result of a list request.",
+   "IsNullable": false,
+   "Properties": [
+    {
+     "$id": "64",
+     "Name": "items",
+     "SerializedName": "items",
+     "Description": "",
+     "Type": {
+      "$id": "65",
+      "Name": "Array",
+      "ElementType": {
+       "$ref": "60"
+      },
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    },
+    {
+     "$id": "66",
+     "Name": "@nextLink",
+     "SerializedName": "@nextLink",
+     "Description": "",
+     "Type": {
+      "$id": "67",
+      "Name": "string",
+      "Kind": "String",
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    }
+   ]
+  },
+  {
+   "$id": "68",
+   "Name": "KeyValue",
+   "Namespace": "",
+   "Description": "// TODO: (missing-description) Add description",
+   "IsNullable": false,
+   "Properties": [
+    {
+     "$id": "69",
+     "Name": "key",
+     "SerializedName": "key",
+     "Description": "",
+     "Type": {
+      "$id": "70",
+      "Name": "string",
+      "Kind": "String",
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    },
+    {
+     "$id": "71",
+     "Name": "label",
+     "SerializedName": "label",
+     "Description": "",
+     "Type": {
+      "$id": "72",
+      "Name": "string",
+      "Kind": "String",
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    },
+    {
+     "$id": "73",
+     "Name": "content_type",
+     "SerializedName": "content_type",
+     "Description": "",
+     "Type": {
+      "$id": "74",
+      "Name": "string",
+      "Kind": "String",
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    },
+    {
+     "$id": "75",
+     "Name": "value",
+     "SerializedName": "value",
+     "Description": "",
+     "Type": {
+      "$id": "76",
+      "Name": "string",
+      "Kind": "String",
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    },
+    {
+     "$id": "77",
+     "Name": "last_modified",
+     "SerializedName": "last_modified",
+     "Description": "",
+     "Type": {
+      "$id": "78",
+      "Name": "DateTime",
+      "Kind": "DateTime",
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    },
+    {
+     "$id": "79",
+     "Name": "tags",
+     "SerializedName": "tags",
+     "Description": "",
+     "Type": {
+      "$id": "80",
+      "Name": "Dictionary",
+      "KeyType": {
+       "$id": "81",
+       "Name": "string",
+       "Kind": "String",
+       "IsNullable": false
+      },
+      "ValueType": {
+       "$id": "82",
+       "Name": "string",
+       "Kind": "String",
+       "IsNullable": false
+      },
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    },
+    {
+     "$id": "83",
+     "Name": "locked",
+     "SerializedName": "locked",
+     "Description": "",
+     "Type": {
+      "$id": "84",
+      "Name": "bool",
+      "Kind": "Boolean",
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    },
+    {
+     "$id": "85",
+     "Name": "etag",
+     "SerializedName": "etag",
+     "Description": "",
+     "Type": {
+      "$id": "86",
+      "Name": "string",
+      "Kind": "String",
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    }
+   ]
+  },
+  {
+   "$id": "87",
+   "Name": "KeyValueListResult",
+   "Namespace": "",
+   "Description": "The result of a list request.",
+   "IsNullable": false,
+   "Properties": [
+    {
+     "$id": "88",
+     "Name": "items",
+     "SerializedName": "items",
+     "Description": "",
+     "Type": {
+      "$id": "89",
+      "Name": "Array",
+      "ElementType": {
+       "$ref": "68"
+      },
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    },
+    {
+     "$id": "90",
+     "Name": "@nextLink",
+     "SerializedName": "@nextLink",
+     "Description": "",
+     "Type": {
+      "$id": "91",
+      "Name": "string",
+      "Kind": "String",
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    }
+   ]
+  },
+  {
+   "$id": "92",
+   "Name": "Label",
+   "Namespace": "",
+   "Description": "// TODO: (missing-description) Add description",
+   "IsNullable": false,
+   "Properties": [
+    {
+     "$id": "93",
+     "Name": "name",
+     "SerializedName": "name",
+     "Description": "",
+     "Type": {
+      "$id": "94",
+      "Name": "string",
+      "Kind": "String",
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    }
+   ]
+  },
+  {
+   "$id": "95",
+   "Name": "LabelListResult",
+   "Namespace": "",
+   "Description": "The result of a list request.",
+   "IsNullable": false,
+   "Properties": [
+    {
+     "$id": "96",
+     "Name": "items",
+     "SerializedName": "items",
+     "Description": "",
+     "Type": {
+      "$id": "97",
+      "Name": "Array",
+      "ElementType": {
+       "$ref": "92"
+      },
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    },
+    {
+     "$id": "98",
+     "Name": "@nextLink",
+     "SerializedName": "@nextLink",
+     "Description": "",
+     "Type": {
+      "$id": "99",
+      "Name": "string",
+      "Kind": "String",
+      "IsNullable": false
+     },
+     "IsRequired": true,
+     "IsReadOnly": false,
+     "IsDiscriminator": false
+    }
+   ]
   }
  ],
  "Clients": [
@@ -502,6 +815,18 @@
        "SkipUrlEncoding": true,
        "Explode": false,
        "Kind": "Method"
+      }
+     ],
+     "Responses": [
+      {
+       "$id": "116",
+       "StatusCodes": [
+        200
+       ],
+       "BodyType": {
+        "$ref": "63"
+       },
+       "BodyMediaType": "Json"
       }
      ],
      "HttpMethod": "GET",
