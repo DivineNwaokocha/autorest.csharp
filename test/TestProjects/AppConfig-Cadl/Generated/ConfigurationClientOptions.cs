@@ -8,10 +8,10 @@
 using System;
 using Azure.Core;
 
-namespace GeneratedModels
+namespace Azure.Data.AppConfiguration
 {
-    /// <summary> Client options for Client. </summary>
-    public partial class ClientOptions : Azure.Core.ClientOptions
+    /// <summary> Client options for ConfigurationClient. </summary>
+    public partial class ConfigurationClientOptions : ClientOptions
     {
         private const ServiceVersion LatestVersion = ServiceVersion.V1_0;
 
@@ -24,8 +24,8 @@ namespace GeneratedModels
 
         internal string Version { get; }
 
-        /// <summary> Initializes new instance of ClientOptions. </summary>
-        public ClientOptions(ServiceVersion version = LatestVersion)
+        /// <summary> Initializes new instance of ConfigurationClientOptions. </summary>
+        public ConfigurationClientOptions(ServiceVersion version = LatestVersion)
         {
             Version = version switch
             {

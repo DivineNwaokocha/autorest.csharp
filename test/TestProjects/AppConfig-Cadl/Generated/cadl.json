@@ -1,6 +1,6 @@
 {
  "$id": "1",
- "Name": "azureappconfiguration",
+ "Name": "azure.data.appconfiguration",
  "Description": "// TODO: (miissing-service-description) Add service description",
  "ApiVersions": [
   "1.0"
@@ -9,7 +9,7 @@
   {
    "$id": "2",
    "Name": "get_6_itemsItem",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
@@ -60,7 +60,7 @@
   {
    "$id": "11",
    "Name": "head_6_itemsItem",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
@@ -111,7 +111,7 @@
   {
    "$id": "20",
    "Name": "get_7_itemsItem",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
@@ -162,7 +162,7 @@
   {
    "$id": "29",
    "Name": "head_7_itemsItem",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
@@ -213,7 +213,7 @@
   {
    "$id": "38",
    "Name": "get_5_itemsItem",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
@@ -229,7 +229,7 @@
   {
    "$id": "40",
    "Name": "head_5_itemsItem",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
@@ -245,7 +245,7 @@
   {
    "$id": "42",
    "Name": "paths·18s2vl1·revisions·get·parameters·6·schema·items",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
@@ -296,7 +296,7 @@
   {
    "$id": "51",
    "Name": "paths·eaaa80·revisions·head·parameters·6·schema·items",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "// TODO: (missing-description) Add description",
    "EnumValueType": "String",
    "AllowedValues": [
@@ -349,7 +349,7 @@
   {
    "$id": "60",
    "Name": "Key",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "// TODO: (missing-description) Add description",
    "IsNullable": false,
    "Properties": [
@@ -373,7 +373,7 @@
   {
    "$id": "63",
    "Name": "KeyListResult",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "The result of a list request.",
    "IsNullable": false,
    "Properties": [
@@ -414,7 +414,7 @@
   {
    "$id": "68",
    "Name": "KeyValue",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "// TODO: (missing-description) Add description",
    "IsNullable": false,
    "Properties": [
@@ -554,7 +554,7 @@
   {
    "$id": "87",
    "Name": "KeyValueListResult",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "The result of a list request.",
    "IsNullable": false,
    "Properties": [
@@ -595,7 +595,7 @@
   {
    "$id": "92",
    "Name": "Label",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "// TODO: (missing-description) Add description",
    "IsNullable": false,
    "Properties": [
@@ -619,7 +619,7 @@
   {
    "$id": "95",
    "Name": "LabelListResult",
-   "Namespace": "",
+   "Namespace": "AppConfiguration",
    "Description": "The result of a list request.",
    "IsNullable": false,
    "Properties": [
@@ -661,7 +661,7 @@
  "Clients": [
   {
    "$id": "100",
-   "Name": "Operations",
+   "Name": "Configuration",
    "Operations": [
     {
      "$id": "101",

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Azure.Core;
 
-namespace
+namespace AppConfiguration
 {
     /// <summary> The result of a list request. </summary>
     public partial class LabelListResult
@@ -19,7 +19,7 @@ namespace
         /// <param name="items"></param>
         /// <param name="nextLink"></param>
         /// <exception cref="ArgumentNullException"> <paramref name="items"/> or <paramref name="nextLink"/> is null. </exception>
-        public LabelListResult(IEnumerable<global::.Label> items, string nextLink)
+        public LabelListResult(IEnumerable<Label> items, string nextLink)
         {
             Argument.AssertNotNull(items, nameof(items));
             Argument.AssertNotNull(nextLink, nameof(nextLink));
@@ -30,13 +30,13 @@ namespace
         /// <summary> Initializes a new instance of LabelListResult. </summary>
         /// <param name="items"></param>
         /// <param name="nextLink"></param>
-        internal LabelListResult(IList<global::.Label> items, string nextLink)
+        internal LabelListResult(IList<Label> items, string nextLink)
         {
             Items = items;
             @nextLink = nextLink;
         }
 
-        public IList<global::.Label> Items { get; }
+        public IList<Label> Items { get; }
 
         public string @nextLink { get; set; }
     }

@@ -8,10 +8,10 @@
 using System;
 using System.ComponentModel;
 
-namespace
+namespace AppConfiguration
 {
     /// <summary> // TODO: (missing-description) Add description. </summary>
-    public readonly partial struct Head7ItemsItem : IEquatable<global::.Head7ItemsItem>
+    public readonly partial struct Head7ItemsItem : IEquatable<Head7ItemsItem>
     {
         private readonly string _value;
 
@@ -32,33 +32,33 @@ namespace
         private const string EtagValue = "etag";
 
         /// <summary> key. </summary>
-        public static global::.Head7ItemsItem Key { get; } = new global::.Head7ItemsItem(KeyValue);
+        public static Head7ItemsItem Key { get; } = new Head7ItemsItem(KeyValue);
         /// <summary> label. </summary>
-        public static global::.Head7ItemsItem Label { get; } = new global::.Head7ItemsItem(LabelValue);
+        public static Head7ItemsItem Label { get; } = new Head7ItemsItem(LabelValue);
         /// <summary> content_type. </summary>
-        public static global::.Head7ItemsItem ContentType { get; } = new global::.Head7ItemsItem(ContentTypeValue);
+        public static Head7ItemsItem ContentType { get; } = new Head7ItemsItem(ContentTypeValue);
         /// <summary> value. </summary>
-        public static global::.Head7ItemsItem Value { get; } = new global::.Head7ItemsItem(ValueValue);
+        public static Head7ItemsItem Value { get; } = new Head7ItemsItem(ValueValue);
         /// <summary> last_modified. </summary>
-        public static global::.Head7ItemsItem LastModified { get; } = new global::.Head7ItemsItem(LastModifiedValue);
+        public static Head7ItemsItem LastModified { get; } = new Head7ItemsItem(LastModifiedValue);
         /// <summary> tags. </summary>
-        public static global::.Head7ItemsItem Tags { get; } = new global::.Head7ItemsItem(TagsValue);
+        public static Head7ItemsItem Tags { get; } = new Head7ItemsItem(TagsValue);
         /// <summary> locked. </summary>
-        public static global::.Head7ItemsItem Locked { get; } = new global::.Head7ItemsItem(LockedValue);
+        public static Head7ItemsItem Locked { get; } = new Head7ItemsItem(LockedValue);
         /// <summary> etag. </summary>
-        public static global::.Head7ItemsItem Etag { get; } = new global::.Head7ItemsItem(EtagValue);
+        public static Head7ItemsItem Etag { get; } = new Head7ItemsItem(EtagValue);
         /// <summary> Determines if two <see cref="Head7ItemsItem"/> values are the same. </summary>
-        public static bool operator ==(global::.Head7ItemsItem left, global::.Head7ItemsItem right) => left.Equals(right);
+        public static bool operator ==(Head7ItemsItem left, Head7ItemsItem right) => left.Equals(right);
         /// <summary> Determines if two <see cref="Head7ItemsItem"/> values are not the same. </summary>
-        public static bool operator !=(global::.Head7ItemsItem left, global::.Head7ItemsItem right) => !left.Equals(right);
+        public static bool operator !=(Head7ItemsItem left, Head7ItemsItem right) => !left.Equals(right);
         /// <summary> Converts a string to a <see cref="Head7ItemsItem"/>. </summary>
-        public static implicit operator global::.Head7ItemsItem(string value) => new global::.Head7ItemsItem(value);
+        public static implicit operator Head7ItemsItem(string value) => new Head7ItemsItem(value);
 
         /// <inheritdoc />
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object obj) => obj is global::.Head7ItemsItem other && Equals(other);
+        public override bool Equals(object obj) => obj is Head7ItemsItem other && Equals(other);
         /// <inheritdoc />
-        public bool Equals(global::.Head7ItemsItem other) => string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase);
+        public bool Equals(Head7ItemsItem other) => string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase);
 
         /// <inheritdoc />
         [EditorBrowsable(EditorBrowsableState.Never)]

@@ -10,7 +10,7 @@ using System.Text.Json;
 using Azure;
 using Azure.Core;
 
-namespace
+namespace AppConfiguration
 {
     public partial class LabelListResult : IUtf8JsonSerializable
     {
@@ -29,18 +29,18 @@ namespace
             writer.WriteEndObject();
         }
 
-        internal static global::.LabelListResult DeserializeLabelListResult(JsonElement element)
+        internal static LabelListResult DeserializeLabelListResult(JsonElement element)
         {
-            System.Collections.Generic.IList < global::.Label > items = default;
+            IList<Label> items = default;
             string nextLink = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("items"))
                 {
-                    System.Collections.Generic.List < global::.Label > array = new List<global::.Label>();
+                    List<Label> array = new List<Label>();
                     foreach (var item in property.Value.EnumerateArray())
                     {
-                        array.Add(global::.Label.DeserializeLabel(item));
+                        array.Add(Label.DeserializeLabel(item));
                     }
                     items = array;
                     continue;
@@ -51,7 +51,7 @@ namespace
                     continue;
                 }
             }
-            return new global::.LabelListResult(items, nextLink);
+            return new LabelListResult(items, nextLink);
         }
 
         internal RequestContent ToRequestContent()
@@ -61,7 +61,7 @@ namespace
             return content;
         }
 
-        internal static global::.LabelListResult FromResponse(Response response)
+        internal static LabelListResult FromResponse(Response response)
         {
             using var document = JsonDocument.Parse(response.Content);
             return DeserializeLabelListResult(document.RootElement);

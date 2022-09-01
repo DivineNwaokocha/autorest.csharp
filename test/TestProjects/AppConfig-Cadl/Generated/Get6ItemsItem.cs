@@ -8,10 +8,10 @@
 using System;
 using System.ComponentModel;
 
-namespace
+namespace AppConfiguration
 {
     /// <summary> // TODO: (missing-description) Add description. </summary>
-    public readonly partial struct Get6ItemsItem : IEquatable<global::.Get6ItemsItem>
+    public readonly partial struct Get6ItemsItem : IEquatable<Get6ItemsItem>
     {
         private readonly string _value;
 
@@ -32,33 +32,33 @@ namespace
         private const string EtagValue = "etag";
 
         /// <summary> key. </summary>
-        public static global::.Get6ItemsItem Key { get; } = new global::.Get6ItemsItem(KeyValue);
+        public static Get6ItemsItem Key { get; } = new Get6ItemsItem(KeyValue);
         /// <summary> label. </summary>
-        public static global::.Get6ItemsItem Label { get; } = new global::.Get6ItemsItem(LabelValue);
+        public static Get6ItemsItem Label { get; } = new Get6ItemsItem(LabelValue);
         /// <summary> content_type. </summary>
-        public static global::.Get6ItemsItem ContentType { get; } = new global::.Get6ItemsItem(ContentTypeValue);
+        public static Get6ItemsItem ContentType { get; } = new Get6ItemsItem(ContentTypeValue);
         /// <summary> value. </summary>
-        public static global::.Get6ItemsItem Value { get; } = new global::.Get6ItemsItem(ValueValue);
+        public static Get6ItemsItem Value { get; } = new Get6ItemsItem(ValueValue);
         /// <summary> last_modified. </summary>
-        public static global::.Get6ItemsItem LastModified { get; } = new global::.Get6ItemsItem(LastModifiedValue);
+        public static Get6ItemsItem LastModified { get; } = new Get6ItemsItem(LastModifiedValue);
         /// <summary> tags. </summary>
-        public static global::.Get6ItemsItem Tags { get; } = new global::.Get6ItemsItem(TagsValue);
+        public static Get6ItemsItem Tags { get; } = new Get6ItemsItem(TagsValue);
         /// <summary> locked. </summary>
-        public static global::.Get6ItemsItem Locked { get; } = new global::.Get6ItemsItem(LockedValue);
+        public static Get6ItemsItem Locked { get; } = new Get6ItemsItem(LockedValue);
         /// <summary> etag. </summary>
-        public static global::.Get6ItemsItem Etag { get; } = new global::.Get6ItemsItem(EtagValue);
+        public static Get6ItemsItem Etag { get; } = new Get6ItemsItem(EtagValue);
         /// <summary> Determines if two <see cref="Get6ItemsItem"/> values are the same. </summary>
-        public static bool operator ==(global::.Get6ItemsItem left, global::.Get6ItemsItem right) => left.Equals(right);
+        public static bool operator ==(Get6ItemsItem left, Get6ItemsItem right) => left.Equals(right);
         /// <summary> Determines if two <see cref="Get6ItemsItem"/> values are not the same. </summary>
-        public static bool operator !=(global::.Get6ItemsItem left, global::.Get6ItemsItem right) => !left.Equals(right);
+        public static bool operator !=(Get6ItemsItem left, Get6ItemsItem right) => !left.Equals(right);
         /// <summary> Converts a string to a <see cref="Get6ItemsItem"/>. </summary>
-        public static implicit operator global::.Get6ItemsItem(string value) => new global::.Get6ItemsItem(value);
+        public static implicit operator Get6ItemsItem(string value) => new Get6ItemsItem(value);
 
         /// <inheritdoc />
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object obj) => obj is global::.Get6ItemsItem other && Equals(other);
+        public override bool Equals(object obj) => obj is Get6ItemsItem other && Equals(other);
         /// <inheritdoc />
-        public bool Equals(global::.Get6ItemsItem other) => string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase);
+        public bool Equals(Get6ItemsItem other) => string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase);
 
         /// <inheritdoc />
         [EditorBrowsable(EditorBrowsableState.Never)]

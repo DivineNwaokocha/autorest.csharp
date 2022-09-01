@@ -8,10 +8,10 @@
 using System;
 using System.ComponentModel;
 
-namespace
+namespace AppConfiguration
 {
     /// <summary> // TODO: (missing-description) Add description. </summary>
-    public readonly partial struct PathsEaaa80RevisionsHeadParameters6SchemaItems : IEquatable<global::.PathsEaaa80RevisionsHeadParameters6SchemaItems>
+    public readonly partial struct PathsEaaa80RevisionsHeadParameters6SchemaItems : IEquatable<PathsEaaa80RevisionsHeadParameters6SchemaItems>
     {
         private readonly string _value;
 
@@ -32,33 +32,33 @@ namespace
         private const string EtagValue = "etag";
 
         /// <summary> key. </summary>
-        public static global::.PathsEaaa80RevisionsHeadParameters6SchemaItems Key { get; } = new global::.PathsEaaa80RevisionsHeadParameters6SchemaItems(KeyValue);
+        public static PathsEaaa80RevisionsHeadParameters6SchemaItems Key { get; } = new PathsEaaa80RevisionsHeadParameters6SchemaItems(KeyValue);
         /// <summary> label. </summary>
-        public static global::.PathsEaaa80RevisionsHeadParameters6SchemaItems Label { get; } = new global::.PathsEaaa80RevisionsHeadParameters6SchemaItems(LabelValue);
+        public static PathsEaaa80RevisionsHeadParameters6SchemaItems Label { get; } = new PathsEaaa80RevisionsHeadParameters6SchemaItems(LabelValue);
         /// <summary> content_type. </summary>
-        public static global::.PathsEaaa80RevisionsHeadParameters6SchemaItems ContentType { get; } = new global::.PathsEaaa80RevisionsHeadParameters6SchemaItems(ContentTypeValue);
+        public static PathsEaaa80RevisionsHeadParameters6SchemaItems ContentType { get; } = new PathsEaaa80RevisionsHeadParameters6SchemaItems(ContentTypeValue);
         /// <summary> value. </summary>
-        public static global::.PathsEaaa80RevisionsHeadParameters6SchemaItems Value { get; } = new global::.PathsEaaa80RevisionsHeadParameters6SchemaItems(ValueValue);
+        public static PathsEaaa80RevisionsHeadParameters6SchemaItems Value { get; } = new PathsEaaa80RevisionsHeadParameters6SchemaItems(ValueValue);
         /// <summary> last_modified. </summary>
-        public static global::.PathsEaaa80RevisionsHeadParameters6SchemaItems LastModified { get; } = new global::.PathsEaaa80RevisionsHeadParameters6SchemaItems(LastModifiedValue);
+        public static PathsEaaa80RevisionsHeadParameters6SchemaItems LastModified { get; } = new PathsEaaa80RevisionsHeadParameters6SchemaItems(LastModifiedValue);
         /// <summary> tags. </summary>
-        public static global::.PathsEaaa80RevisionsHeadParameters6SchemaItems Tags { get; } = new global::.PathsEaaa80RevisionsHeadParameters6SchemaItems(TagsValue);
+        public static PathsEaaa80RevisionsHeadParameters6SchemaItems Tags { get; } = new PathsEaaa80RevisionsHeadParameters6SchemaItems(TagsValue);
         /// <summary> locked. </summary>
-        public static global::.PathsEaaa80RevisionsHeadParameters6SchemaItems Locked { get; } = new global::.PathsEaaa80RevisionsHeadParameters6SchemaItems(LockedValue);
+        public static PathsEaaa80RevisionsHeadParameters6SchemaItems Locked { get; } = new PathsEaaa80RevisionsHeadParameters6SchemaItems(LockedValue);
         /// <summary> etag. </summary>
-        public static global::.PathsEaaa80RevisionsHeadParameters6SchemaItems Etag { get; } = new global::.PathsEaaa80RevisionsHeadParameters6SchemaItems(EtagValue);
+        public static PathsEaaa80RevisionsHeadParameters6SchemaItems Etag { get; } = new PathsEaaa80RevisionsHeadParameters6SchemaItems(EtagValue);
         /// <summary> Determines if two <see cref="PathsEaaa80RevisionsHeadParameters6SchemaItems"/> values are the same. </summary>
-        public static bool operator ==(global::.PathsEaaa80RevisionsHeadParameters6SchemaItems left, global::.PathsEaaa80RevisionsHeadParameters6SchemaItems right) => left.Equals(right);
+        public static bool operator ==(PathsEaaa80RevisionsHeadParameters6SchemaItems left, PathsEaaa80RevisionsHeadParameters6SchemaItems right) => left.Equals(right);
         /// <summary> Determines if two <see cref="PathsEaaa80RevisionsHeadParameters6SchemaItems"/> values are not the same. </summary>
-        public static bool operator !=(global::.PathsEaaa80RevisionsHeadParameters6SchemaItems left, global::.PathsEaaa80RevisionsHeadParameters6SchemaItems right) => !left.Equals(right);
+        public static bool operator !=(PathsEaaa80RevisionsHeadParameters6SchemaItems left, PathsEaaa80RevisionsHeadParameters6SchemaItems right) => !left.Equals(right);
         /// <summary> Converts a string to a <see cref="PathsEaaa80RevisionsHeadParameters6SchemaItems"/>. </summary>
-        public static implicit operator global::.PathsEaaa80RevisionsHeadParameters6SchemaItems(string value) => new global::.PathsEaaa80RevisionsHeadParameters6SchemaItems(value);
+        public static implicit operator PathsEaaa80RevisionsHeadParameters6SchemaItems(string value) => new PathsEaaa80RevisionsHeadParameters6SchemaItems(value);
 
         /// <inheritdoc />
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object obj) => obj is global::.PathsEaaa80RevisionsHeadParameters6SchemaItems other && Equals(other);
+        public override bool Equals(object obj) => obj is PathsEaaa80RevisionsHeadParameters6SchemaItems other && Equals(other);
         /// <inheritdoc />
-        public bool Equals(global::.PathsEaaa80RevisionsHeadParameters6SchemaItems other) => string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase);
+        public bool Equals(PathsEaaa80RevisionsHeadParameters6SchemaItems other) => string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase);
 
         /// <inheritdoc />
         [EditorBrowsable(EditorBrowsableState.Never)]

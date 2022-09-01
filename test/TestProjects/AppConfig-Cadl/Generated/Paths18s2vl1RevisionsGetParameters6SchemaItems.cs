@@ -8,10 +8,10 @@
 using System;
 using System.ComponentModel;
 
-namespace
+namespace AppConfiguration
 {
     /// <summary> // TODO: (missing-description) Add description. </summary>
-    public readonly partial struct Paths18s2vl1RevisionsGetParameters6SchemaItems : IEquatable<global::.Paths18s2vl1RevisionsGetParameters6SchemaItems>
+    public readonly partial struct Paths18s2vl1RevisionsGetParameters6SchemaItems : IEquatable<Paths18s2vl1RevisionsGetParameters6SchemaItems>
     {
         private readonly string _value;
 
@@ -32,33 +32,33 @@ namespace
         private const string EtagValue = "etag";
 
         /// <summary> key. </summary>
-        public static global::.Paths18s2vl1RevisionsGetParameters6SchemaItems Key { get; } = new global::.Paths18s2vl1RevisionsGetParameters6SchemaItems(KeyValue);
+        public static Paths18s2vl1RevisionsGetParameters6SchemaItems Key { get; } = new Paths18s2vl1RevisionsGetParameters6SchemaItems(KeyValue);
         /// <summary> label. </summary>
-        public static global::.Paths18s2vl1RevisionsGetParameters6SchemaItems Label { get; } = new global::.Paths18s2vl1RevisionsGetParameters6SchemaItems(LabelValue);
+        public static Paths18s2vl1RevisionsGetParameters6SchemaItems Label { get; } = new Paths18s2vl1RevisionsGetParameters6SchemaItems(LabelValue);
         /// <summary> content_type. </summary>
-        public static global::.Paths18s2vl1RevisionsGetParameters6SchemaItems ContentType { get; } = new global::.Paths18s2vl1RevisionsGetParameters6SchemaItems(ContentTypeValue);
+        public static Paths18s2vl1RevisionsGetParameters6SchemaItems ContentType { get; } = new Paths18s2vl1RevisionsGetParameters6SchemaItems(ContentTypeValue);
         /// <summary> value. </summary>
-        public static global::.Paths18s2vl1RevisionsGetParameters6SchemaItems Value { get; } = new global::.Paths18s2vl1RevisionsGetParameters6SchemaItems(ValueValue);
+        public static Paths18s2vl1RevisionsGetParameters6SchemaItems Value { get; } = new Paths18s2vl1RevisionsGetParameters6SchemaItems(ValueValue);
         /// <summary> last_modified. </summary>
-        public static global::.Paths18s2vl1RevisionsGetParameters6SchemaItems LastModified { get; } = new global::.Paths18s2vl1RevisionsGetParameters6SchemaItems(LastModifiedValue);
+        public static Paths18s2vl1RevisionsGetParameters6SchemaItems LastModified { get; } = new Paths18s2vl1RevisionsGetParameters6SchemaItems(LastModifiedValue);
         /// <summary> tags. </summary>
-        public static global::.Paths18s2vl1RevisionsGetParameters6SchemaItems Tags { get; } = new global::.Paths18s2vl1RevisionsGetParameters6SchemaItems(TagsValue);
+        public static Paths18s2vl1RevisionsGetParameters6SchemaItems Tags { get; } = new Paths18s2vl1RevisionsGetParameters6SchemaItems(TagsValue);
         /// <summary> locked. </summary>
-        public static global::.Paths18s2vl1RevisionsGetParameters6SchemaItems Locked { get; } = new global::.Paths18s2vl1RevisionsGetParameters6SchemaItems(LockedValue);
+        public static Paths18s2vl1RevisionsGetParameters6SchemaItems Locked { get; } = new Paths18s2vl1RevisionsGetParameters6SchemaItems(LockedValue);
         /// <summary> etag. </summary>
-        public static global::.Paths18s2vl1RevisionsGetParameters6SchemaItems Etag { get; } = new global::.Paths18s2vl1RevisionsGetParameters6SchemaItems(EtagValue);
+        public static Paths18s2vl1RevisionsGetParameters6SchemaItems Etag { get; } = new Paths18s2vl1RevisionsGetParameters6SchemaItems(EtagValue);
         /// <summary> Determines if two <see cref="Paths18s2vl1RevisionsGetParameters6SchemaItems"/> values are the same. </summary>
-        public static bool operator ==(global::.Paths18s2vl1RevisionsGetParameters6SchemaItems left, global::.Paths18s2vl1RevisionsGetParameters6SchemaItems right) => left.Equals(right);
+        public static bool operator ==(Paths18s2vl1RevisionsGetParameters6SchemaItems left, Paths18s2vl1RevisionsGetParameters6SchemaItems right) => left.Equals(right);
         /// <summary> Determines if two <see cref="Paths18s2vl1RevisionsGetParameters6SchemaItems"/> values are not the same. </summary>
-        public static bool operator !=(global::.Paths18s2vl1RevisionsGetParameters6SchemaItems left, global::.Paths18s2vl1RevisionsGetParameters6SchemaItems right) => !left.Equals(right);
+        public static bool operator !=(Paths18s2vl1RevisionsGetParameters6SchemaItems left, Paths18s2vl1RevisionsGetParameters6SchemaItems right) => !left.Equals(right);
         /// <summary> Converts a string to a <see cref="Paths18s2vl1RevisionsGetParameters6SchemaItems"/>. </summary>
-        public static implicit operator global::.Paths18s2vl1RevisionsGetParameters6SchemaItems(string value) => new global::.Paths18s2vl1RevisionsGetParameters6SchemaItems(value);
+        public static implicit operator Paths18s2vl1RevisionsGetParameters6SchemaItems(string value) => new Paths18s2vl1RevisionsGetParameters6SchemaItems(value);
 
         /// <inheritdoc />
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object obj) => obj is global::.Paths18s2vl1RevisionsGetParameters6SchemaItems other && Equals(other);
+        public override bool Equals(object obj) => obj is Paths18s2vl1RevisionsGetParameters6SchemaItems other && Equals(other);
         /// <inheritdoc />
-        public bool Equals(global::.Paths18s2vl1RevisionsGetParameters6SchemaItems other) => string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase);
+        public bool Equals(Paths18s2vl1RevisionsGetParameters6SchemaItems other) => string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase);
 
         /// <inheritdoc />
         [EditorBrowsable(EditorBrowsableState.Never)]

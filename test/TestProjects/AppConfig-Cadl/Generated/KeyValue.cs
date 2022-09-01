@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using Azure.Core;
 
-namespace
+namespace AppConfiguration
 {
     /// <summary> // TODO: (missing-description) Add description. </summary>
     public partial class KeyValue

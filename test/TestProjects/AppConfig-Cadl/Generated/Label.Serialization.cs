@@ -9,7 +9,7 @@ using System.Text.Json;
 using Azure;
 using Azure.Core;
 
-namespace
+namespace AppConfiguration
 {
     public partial class Label : IUtf8JsonSerializable
     {
@@ -21,7 +21,7 @@ namespace
             writer.WriteEndObject();
         }
 
-        internal static global::.Label DeserializeLabel(JsonElement element)
+        internal static Label DeserializeLabel(JsonElement element)
         {
             string name = default;
             foreach (var property in element.EnumerateObject())
@@ -32,7 +32,7 @@ namespace
                     continue;
                 }
             }
-            return new global::.Label(name);
+            return new Label(name);
         }
 
         internal RequestContent ToRequestContent()
@@ -42,7 +42,7 @@ namespace
             return content;
         }
 
-        internal static global::.Label FromResponse(Response response)
+        internal static Label FromResponse(Response response)
         {
             using var document = JsonDocument.Parse(response.Content);
             return DeserializeLabel(document.RootElement);

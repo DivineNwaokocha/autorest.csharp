@@ -11,7 +11,7 @@ using System.Text.Json;
 using Azure;
 using Azure.Core;
 
-namespace
+namespace AppConfiguration
 {
     public partial class KeyValue : IUtf8JsonSerializable
     {
@@ -43,7 +43,7 @@ namespace
             writer.WriteEndObject();
         }
 
-        internal static global::.KeyValue DeserializeKeyValue(JsonElement element)
+        internal static KeyValue DeserializeKeyValue(JsonElement element)
         {
             string key = default;
             string label = default;
@@ -101,7 +101,7 @@ namespace
                     continue;
                 }
             }
-            return new global::.KeyValue(key, label, contentType, value, lastModified, tags, locked, etag);
+            return new KeyValue(key, label, contentType, value, lastModified, tags, locked, etag);
         }
 
         internal RequestContent ToRequestContent()
@@ -111,7 +111,7 @@ namespace
             return content;
         }
 
-        internal static global::.KeyValue FromResponse(Response response)
+        internal static KeyValue FromResponse(Response response)
         {
             using var document = JsonDocument.Parse(response.Content);
             return DeserializeKeyValue(document.RootElement);

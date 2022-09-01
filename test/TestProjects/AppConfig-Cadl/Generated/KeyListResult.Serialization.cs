@@ -10,7 +10,7 @@ using System.Text.Json;
 using Azure;
 using Azure.Core;
 
-namespace
+namespace AppConfiguration
 {
     public partial class KeyListResult : IUtf8JsonSerializable
     {
@@ -29,18 +29,18 @@ namespace
             writer.WriteEndObject();
         }
 
-        internal static global::.KeyListResult DeserializeKeyListResult(JsonElement element)
+        internal static KeyListResult DeserializeKeyListResult(JsonElement element)
         {
-            System.Collections.Generic.IList < global::.Key > items = default;
+            IList<Key> items = default;
             string nextLink = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("items"))
                 {
-                    System.Collections.Generic.List < global::.Key > array = new List<global::.Key>();
+                    List<Key> array = new List<Key>();
                     foreach (var item in property.Value.EnumerateArray())
                     {
-                        array.Add(global::.Key.DeserializeKey(item));
+                        array.Add(Key.DeserializeKey(item));
                     }
                     items = array;
                     continue;
@@ -51,7 +51,7 @@ namespace
                     continue;
                 }
             }
-            return new global::.KeyListResult(items, nextLink);
+            return new KeyListResult(items, nextLink);
         }
 
         internal RequestContent ToRequestContent()
@@ -61,7 +61,7 @@ namespace
             return content;
         }
 
-        internal static global::.KeyListResult FromResponse(Response response)
+        internal static KeyListResult FromResponse(Response response)
         {
             using var document = JsonDocument.Parse(response.Content);
             return DeserializeKeyListResult(document.RootElement);

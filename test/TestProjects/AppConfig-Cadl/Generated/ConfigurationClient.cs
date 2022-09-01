@@ -9,15 +9,15 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using ;
+using AppConfiguration;
 using Azure;
 using Azure.Core;
 using Azure.Core.Pipeline;
 
-namespace GeneratedModels
+namespace Azure.Data.AppConfiguration
 {
-    /// <summary> The  service client. </summary>
-    public partial class Client
+    /// <summary> The Configuration service client. </summary>
+    public partial class ConfigurationClient
     {
         private readonly HttpPipeline _pipeline;
         private readonly Uri _endpoint;
@@ -28,26 +28,26 @@ namespace GeneratedModels
         /// <summary> The HTTP pipeline for sending and receiving REST requests and responses. </summary>
         public virtual HttpPipeline Pipeline => _pipeline;
 
-        /// <summary> Initializes a new instance of Client for mocking. </summary>
-        protected Client()
+        /// <summary> Initializes a new instance of ConfigurationClient for mocking. </summary>
+        protected ConfigurationClient()
         {
         }
 
-        /// <summary> Initializes a new instance of Client. </summary>
+        /// <summary> Initializes a new instance of ConfigurationClient. </summary>
         /// <param name="endpoint"> The endpoint of the App Configuration instance to send requests to. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="endpoint"/> is null. </exception>
-        public Client(Uri endpoint) : this(endpoint, new ClientOptions())
+        public ConfigurationClient(Uri endpoint) : this(endpoint, new ConfigurationClientOptions())
         {
         }
 
-        /// <summary> Initializes a new instance of Client. </summary>
+        /// <summary> Initializes a new instance of ConfigurationClient. </summary>
         /// <param name="endpoint"> The endpoint of the App Configuration instance to send requests to. </param>
         /// <param name="options"> The options for configuring the client. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="endpoint"/> is null. </exception>
-        public Client(Uri endpoint, ClientOptions options)
+        public ConfigurationClient(Uri endpoint, ConfigurationClientOptions options)
         {
             Argument.AssertNotNull(endpoint, nameof(endpoint));
-            options ??= new ClientOptions();
+            options ??= new ConfigurationClientOptions();
 
             ClientDiagnostics = new ClientDiagnostics(options, true);
             _pipeline = HttpPipelineBuilder.Build(options, Array.Empty<HttpPipelinePolicy>(), Array.Empty<HttpPipelinePolicy>(), new ResponseClassifier());
@@ -63,19 +63,19 @@ namespace GeneratedModels
         /// <param name="accept"> Accept header. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="name"/>, <paramref name="apiVersion"/> or <paramref name="after"/> is null. </exception>
-        public virtual async Task<Response<global::.KeyListResult>> GetKeyValuesAsync(string name, string apiVersion, string after, string syncToken = null, string acceptDatetime = null, string accept = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<KeyListResult>> GetKeyValuesAsync(string name, string apiVersion, string after, string syncToken = null, string acceptDatetime = null, string accept = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(name, nameof(name));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
             Argument.AssertNotNull(after, nameof(after));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetKeyValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetKeyValues");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = await GetKeysAsync(name, apiVersion, after, syncToken, acceptDatetime, accept, context).ConfigureAwait(false);
-                return Response.FromValue(global::.KeyListResult.FromResponse(response), response);
+                return Response.FromValue(KeyListResult.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -93,19 +93,19 @@ namespace GeneratedModels
         /// <param name="accept"> Accept header. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="name"/>, <paramref name="apiVersion"/> or <paramref name="after"/> is null. </exception>
-        public virtual Response<global::.KeyListResult> GetKeyValues(string name, string apiVersion, string after, string syncToken = null, string acceptDatetime = null, string accept = null, CancellationToken cancellationToken = default)
+        public virtual Response<KeyListResult> GetKeyValues(string name, string apiVersion, string after, string syncToken = null, string acceptDatetime = null, string accept = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(name, nameof(name));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
             Argument.AssertNotNull(after, nameof(after));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetKeyValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetKeyValues");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = GetKeys(name, apiVersion, after, syncToken, acceptDatetime, accept, context);
-                return Response.FromValue(global::.KeyListResult.FromResponse(response), response);
+                return Response.FromValue(KeyListResult.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -129,7 +129,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetKeysAsync with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.GetKeysAsync("<name>", "<apiVersion>", "<after>");
         /// 
@@ -140,7 +140,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetKeysAsync with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.GetKeysAsync("<name>", "<apiVersion>", "<after>", "<syncToken>", "<acceptDatetime>", "<accept>");
         /// 
@@ -172,7 +172,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
             Argument.AssertNotNull(after, nameof(after));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetKeys");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetKeys");
             scope.Start();
             try
             {
@@ -201,7 +201,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetKeys with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.GetKeys("<name>", "<apiVersion>", "<after>");
         /// 
@@ -212,7 +212,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetKeys with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.GetKeys("<name>", "<apiVersion>", "<after>", "<syncToken>", "<acceptDatetime>", "<accept>");
         /// 
@@ -244,7 +244,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
             Argument.AssertNotNull(after, nameof(after));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetKeys");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetKeys");
             scope.Start();
             try
             {
@@ -272,7 +272,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
             Argument.AssertNotNull(after, nameof(after));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckKeyValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckKeyValues");
             scope.Start();
             try
             {
@@ -301,7 +301,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
             Argument.AssertNotNull(after, nameof(after));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckKeyValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckKeyValues");
             scope.Start();
             try
             {
@@ -330,7 +330,7 @@ namespace GeneratedModels
         /// This sample shows how to call CheckKeysAsync with required parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.CheckKeysAsync("<name>", "<apiVersion>", "<after>");
         /// Console.WriteLine(response.Status);
@@ -338,7 +338,7 @@ namespace GeneratedModels
         /// This sample shows how to call CheckKeysAsync with all parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.CheckKeysAsync("<name>", "<apiVersion>", "<after>", "<syncToken>", "<acceptDatetime>");
         /// Console.WriteLine(response.Status);
@@ -350,7 +350,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
             Argument.AssertNotNull(after, nameof(after));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckKeys");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckKeys");
             scope.Start();
             try
             {
@@ -378,7 +378,7 @@ namespace GeneratedModels
         /// This sample shows how to call CheckKeys with required parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.CheckKeys("<name>", "<apiVersion>", "<after>");
         /// Console.WriteLine(response.Status);
@@ -386,7 +386,7 @@ namespace GeneratedModels
         /// This sample shows how to call CheckKeys with all parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.CheckKeys("<name>", "<apiVersion>", "<after>", "<syncToken>", "<acceptDatetime>");
         /// Console.WriteLine(response.Status);
@@ -398,7 +398,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
             Argument.AssertNotNull(after, nameof(after));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckKeys");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckKeys");
             scope.Start();
             try
             {
@@ -423,7 +423,7 @@ namespace GeneratedModels
         /// <param name="accept"> Accept header. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/>, <paramref name="after"/> or <paramref name="select"/> is null. </exception>
-        public virtual async Task<Response<global::.KeyValueListResult>> GetKeyValueValuesAsync(string key, string label, string apiVersion, string after, IEnumerable<global::.Get6ItemsItem> select, string syncToken = null, string acceptDatetime = null, string accept = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<KeyValueListResult>> GetKeyValueValuesAsync(string key, string label, string apiVersion, string after, IEnumerable<Get6ItemsItem> select, string syncToken = null, string acceptDatetime = null, string accept = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -431,13 +431,13 @@ namespace GeneratedModels
             Argument.AssertNotNull(after, nameof(after));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetKeyValueValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetKeyValueValues");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = await GetKeyValuesAsync(key, label, apiVersion, after, select, syncToken, acceptDatetime, accept, context).ConfigureAwait(false);
-                return Response.FromValue(global::.KeyValueListResult.FromResponse(response), response);
+                return Response.FromValue(KeyValueListResult.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -457,7 +457,7 @@ namespace GeneratedModels
         /// <param name="accept"> Accept header. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/>, <paramref name="after"/> or <paramref name="select"/> is null. </exception>
-        public virtual Response<global::.KeyValueListResult> GetKeyValueValues(string key, string label, string apiVersion, string after, IEnumerable<global::.Get6ItemsItem> select, string syncToken = null, string acceptDatetime = null, string accept = null, CancellationToken cancellationToken = default)
+        public virtual Response<KeyValueListResult> GetKeyValueValues(string key, string label, string apiVersion, string after, IEnumerable<Get6ItemsItem> select, string syncToken = null, string acceptDatetime = null, string accept = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -465,13 +465,13 @@ namespace GeneratedModels
             Argument.AssertNotNull(after, nameof(after));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetKeyValueValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetKeyValueValues");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = GetKeyValues(key, label, apiVersion, after, select, syncToken, acceptDatetime, accept, context);
-                return Response.FromValue(global::.KeyValueListResult.FromResponse(response), response);
+                return Response.FromValue(KeyValueListResult.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -497,7 +497,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetKeyValuesAsync with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.GetKeyValuesAsync("<key>", "<label>", "<apiVersion>", "<after>", new Get6ItemsItem[]{null});
         /// 
@@ -515,7 +515,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetKeyValuesAsync with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.GetKeyValuesAsync("<key>", "<label>", "<apiVersion>", "<after>", new Get6ItemsItem[]{null}, "<syncToken>", "<acceptDatetime>", "<accept>");
         /// 
@@ -555,7 +555,7 @@ namespace GeneratedModels
         /// </code>
         /// 
         /// </remarks>
-        public virtual async Task<Response> GetKeyValuesAsync(string key, string label, string apiVersion, string after, IEnumerable<global::.Get6ItemsItem> select, string syncToken = null, string acceptDatetime = null, string accept = null, RequestContext context = null)
+        public virtual async Task<Response> GetKeyValuesAsync(string key, string label, string apiVersion, string after, IEnumerable<Get6ItemsItem> select, string syncToken = null, string acceptDatetime = null, string accept = null, RequestContext context = null)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -563,7 +563,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(after, nameof(after));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetKeyValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetKeyValues");
             scope.Start();
             try
             {
@@ -594,7 +594,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetKeyValues with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.GetKeyValues("<key>", "<label>", "<apiVersion>", "<after>", new Get6ItemsItem[]{null});
         /// 
@@ -612,7 +612,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetKeyValues with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.GetKeyValues("<key>", "<label>", "<apiVersion>", "<after>", new Get6ItemsItem[]{null}, "<syncToken>", "<acceptDatetime>", "<accept>");
         /// 
@@ -652,7 +652,7 @@ namespace GeneratedModels
         /// </code>
         /// 
         /// </remarks>
-        public virtual Response GetKeyValues(string key, string label, string apiVersion, string after, IEnumerable<global::.Get6ItemsItem> select, string syncToken = null, string acceptDatetime = null, string accept = null, RequestContext context = null)
+        public virtual Response GetKeyValues(string key, string label, string apiVersion, string after, IEnumerable<Get6ItemsItem> select, string syncToken = null, string acceptDatetime = null, string accept = null, RequestContext context = null)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -660,7 +660,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(after, nameof(after));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetKeyValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetKeyValues");
             scope.Start();
             try
             {
@@ -684,7 +684,7 @@ namespace GeneratedModels
         /// <param name="syncToken"> Used to guarantee real-time consistency between requests. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/>, <paramref name="after"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual async Task<Response> CheckKeyValueValuesAsync(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Head6ItemsItem> select, string syncToken = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response> CheckKeyValueValuesAsync(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<Head6ItemsItem> select, string syncToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -693,7 +693,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckKeyValueValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckKeyValueValues");
             scope.Start();
             try
             {
@@ -718,7 +718,7 @@ namespace GeneratedModels
         /// <param name="syncToken"> Used to guarantee real-time consistency between requests. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/>, <paramref name="after"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual Response CheckKeyValueValues(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Head6ItemsItem> select, string syncToken = null, CancellationToken cancellationToken = default)
+        public virtual Response CheckKeyValueValues(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<Head6ItemsItem> select, string syncToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -727,7 +727,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckKeyValueValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckKeyValueValues");
             scope.Start();
             try
             {
@@ -758,7 +758,7 @@ namespace GeneratedModels
         /// This sample shows how to call CheckKeyValuesAsync with required parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.CheckKeyValuesAsync("<key>", "<label>", "<apiVersion>", "<after>", "<acceptDatetime>", new Head6ItemsItem[]{null});
         /// Console.WriteLine(response.Status);
@@ -766,13 +766,13 @@ namespace GeneratedModels
         /// This sample shows how to call CheckKeyValuesAsync with all parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.CheckKeyValuesAsync("<key>", "<label>", "<apiVersion>", "<after>", "<acceptDatetime>", new Head6ItemsItem[]{null}, "<syncToken>");
         /// Console.WriteLine(response.Status);
         /// ]]></code>
         /// </example>
-        public virtual async Task<Response> CheckKeyValuesAsync(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Head6ItemsItem> select, string syncToken = null, RequestContext context = null)
+        public virtual async Task<Response> CheckKeyValuesAsync(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<Head6ItemsItem> select, string syncToken = null, RequestContext context = null)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -781,7 +781,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckKeyValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckKeyValues");
             scope.Start();
             try
             {
@@ -811,7 +811,7 @@ namespace GeneratedModels
         /// This sample shows how to call CheckKeyValues with required parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.CheckKeyValues("<key>", "<label>", "<apiVersion>", "<after>", "<acceptDatetime>", new Head6ItemsItem[]{null});
         /// Console.WriteLine(response.Status);
@@ -819,13 +819,13 @@ namespace GeneratedModels
         /// This sample shows how to call CheckKeyValues with all parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.CheckKeyValues("<key>", "<label>", "<apiVersion>", "<after>", "<acceptDatetime>", new Head6ItemsItem[]{null}, "<syncToken>");
         /// Console.WriteLine(response.Status);
         /// ]]></code>
         /// </example>
-        public virtual Response CheckKeyValues(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Head6ItemsItem> select, string syncToken = null, RequestContext context = null)
+        public virtual Response CheckKeyValues(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<Head6ItemsItem> select, string syncToken = null, RequestContext context = null)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -834,7 +834,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckKeyValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckKeyValues");
             scope.Start();
             try
             {
@@ -859,7 +859,7 @@ namespace GeneratedModels
         /// <param name="matchConditions"> The content to send as the request conditions of the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual async Task<Response<global::.KeyValue>> GetKeyValueValueAsync(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<global::.Get7ItemsItem> select, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<KeyValue>> GetKeyValueValueAsync(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<Get7ItemsItem> select, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -867,13 +867,13 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetKeyValueValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetKeyValueValue");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = await GetKeyValueAsync(key, label, apiVersion, acceptDatetime, select, syncToken, accept, matchConditions, context).ConfigureAwait(false);
-                return Response.FromValue(global::.KeyValue.FromResponse(response), response);
+                return Response.FromValue(KeyValue.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -893,7 +893,7 @@ namespace GeneratedModels
         /// <param name="matchConditions"> The content to send as the request conditions of the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual Response<global::.KeyValue> GetKeyValueValue(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<global::.Get7ItemsItem> select, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
+        public virtual Response<KeyValue> GetKeyValueValue(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<Get7ItemsItem> select, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -901,13 +901,13 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetKeyValueValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetKeyValueValue");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = GetKeyValue(key, label, apiVersion, acceptDatetime, select, syncToken, accept, matchConditions, context);
-                return Response.FromValue(global::.KeyValue.FromResponse(response), response);
+                return Response.FromValue(KeyValue.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -933,7 +933,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetKeyValueAsync with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.GetKeyValueAsync("<key>", "<label>", "<apiVersion>", "<acceptDatetime>", new Get7ItemsItem[]{null});
         /// 
@@ -950,7 +950,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetKeyValueAsync with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.GetKeyValueAsync("<key>", "<label>", "<apiVersion>", "<acceptDatetime>", new Get7ItemsItem[]{null}, "<syncToken>", "<accept>", new MatchConditions { IfMatch = "<YOUR_ETAG>" });
         /// 
@@ -984,7 +984,7 @@ namespace GeneratedModels
         /// </code>
         /// 
         /// </remarks>
-        public virtual async Task<Response> GetKeyValueAsync(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<global::.Get7ItemsItem> select, string syncToken = null, string accept = null, MatchConditions matchConditions = null, RequestContext context = null)
+        public virtual async Task<Response> GetKeyValueAsync(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<Get7ItemsItem> select, string syncToken = null, string accept = null, MatchConditions matchConditions = null, RequestContext context = null)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -992,7 +992,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetKeyValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetKeyValue");
             scope.Start();
             try
             {
@@ -1023,7 +1023,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetKeyValue with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.GetKeyValue("<key>", "<label>", "<apiVersion>", "<acceptDatetime>", new Get7ItemsItem[]{null});
         /// 
@@ -1040,7 +1040,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetKeyValue with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.GetKeyValue("<key>", "<label>", "<apiVersion>", "<acceptDatetime>", new Get7ItemsItem[]{null}, "<syncToken>", "<accept>", new MatchConditions { IfMatch = "<YOUR_ETAG>" });
         /// 
@@ -1074,7 +1074,7 @@ namespace GeneratedModels
         /// </code>
         /// 
         /// </remarks>
-        public virtual Response GetKeyValue(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<global::.Get7ItemsItem> select, string syncToken = null, string accept = null, MatchConditions matchConditions = null, RequestContext context = null)
+        public virtual Response GetKeyValue(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<Get7ItemsItem> select, string syncToken = null, string accept = null, MatchConditions matchConditions = null, RequestContext context = null)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -1082,7 +1082,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetKeyValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetKeyValue");
             scope.Start();
             try
             {
@@ -1106,7 +1106,7 @@ namespace GeneratedModels
         /// <param name="matchConditions"> The content to send as the request conditions of the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/> or <paramref name="entity"/> is null. </exception>
-        public virtual async Task<Response<global::.KeyValue>> PutKeyValueAsync(string key, string label, string apiVersion, global::.KeyValue entity, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<KeyValue>> PutKeyValueAsync(string key, string label, string apiVersion, KeyValue entity, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -1115,7 +1115,7 @@ namespace GeneratedModels
 
             RequestContext context = FromCancellationToken(cancellationToken);
             Response response = await PutKeyValueAsync(key, label, apiVersion, entity.ToRequestContent(), syncToken, accept, matchConditions, context).ConfigureAwait(false);
-            return Response.FromValue(global::.KeyValue.FromResponse(response), response);
+            return Response.FromValue(KeyValue.FromResponse(response), response);
         }
 
         /// <summary> Creates a key-value. </summary>
@@ -1128,7 +1128,7 @@ namespace GeneratedModels
         /// <param name="matchConditions"> The content to send as the request conditions of the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/> or <paramref name="entity"/> is null. </exception>
-        public virtual Response<global::.KeyValue> PutKeyValue(string key, string label, string apiVersion, global::.KeyValue entity, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
+        public virtual Response<KeyValue> PutKeyValue(string key, string label, string apiVersion, KeyValue entity, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -1137,7 +1137,7 @@ namespace GeneratedModels
 
             RequestContext context = FromCancellationToken(cancellationToken);
             Response response = PutKeyValue(key, label, apiVersion, entity.ToRequestContent(), syncToken, accept, matchConditions, context);
-            return Response.FromValue(global::.KeyValue.FromResponse(response), response);
+            return Response.FromValue(KeyValue.FromResponse(response), response);
         }
 
         /// <summary> Creates a key-value. </summary>
@@ -1156,7 +1156,7 @@ namespace GeneratedModels
         /// This sample shows how to call PutKeyValueAsync with required parameters and request content, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// var data = new {
         ///     key = "<key>",
@@ -1186,7 +1186,7 @@ namespace GeneratedModels
         /// This sample shows how to call PutKeyValueAsync with all parameters and request content, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// var data = new {
         ///     key = "<key>",
@@ -1255,7 +1255,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
             Argument.AssertNotNull(content, nameof(content));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.PutKeyValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.PutKeyValue");
             scope.Start();
             try
             {
@@ -1285,7 +1285,7 @@ namespace GeneratedModels
         /// This sample shows how to call PutKeyValue with required parameters and request content, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// var data = new {
         ///     key = "<key>",
@@ -1315,7 +1315,7 @@ namespace GeneratedModels
         /// This sample shows how to call PutKeyValue with all parameters and request content, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// var data = new {
         ///     key = "<key>",
@@ -1384,7 +1384,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
             Argument.AssertNotNull(content, nameof(content));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.PutKeyValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.PutKeyValue");
             scope.Start();
             try
             {
@@ -1407,19 +1407,19 @@ namespace GeneratedModels
         /// <param name="ifMatch"> Used to perform an operation only if the targeted resource&apos;s etag matches the value provided. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/> or <paramref name="apiVersion"/> is null. </exception>
-        public virtual async Task<Response<global::.KeyValue>> DeleteKeyValueValueAsync(string key, string label, string apiVersion, string syncToken = null, string accept = null, string ifMatch = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<KeyValue>> DeleteKeyValueValueAsync(string key, string label, string apiVersion, string syncToken = null, string accept = null, string ifMatch = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.DeleteKeyValueValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.DeleteKeyValueValue");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = await DeleteKeyValueAsync(key, label, apiVersion, syncToken, accept, ifMatch, context).ConfigureAwait(false);
-                return Response.FromValue(global::.KeyValue.FromResponse(response), response);
+                return Response.FromValue(KeyValue.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -1437,19 +1437,19 @@ namespace GeneratedModels
         /// <param name="ifMatch"> Used to perform an operation only if the targeted resource&apos;s etag matches the value provided. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/> or <paramref name="apiVersion"/> is null. </exception>
-        public virtual Response<global::.KeyValue> DeleteKeyValueValue(string key, string label, string apiVersion, string syncToken = null, string accept = null, string ifMatch = null, CancellationToken cancellationToken = default)
+        public virtual Response<KeyValue> DeleteKeyValueValue(string key, string label, string apiVersion, string syncToken = null, string accept = null, string ifMatch = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.DeleteKeyValueValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.DeleteKeyValueValue");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = DeleteKeyValue(key, label, apiVersion, syncToken, accept, ifMatch, context);
-                return Response.FromValue(global::.KeyValue.FromResponse(response), response);
+                return Response.FromValue(KeyValue.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -1473,7 +1473,7 @@ namespace GeneratedModels
         /// This sample shows how to call DeleteKeyValueAsync with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.DeleteKeyValueAsync("<key>", "<label>", "<apiVersion>");
         /// 
@@ -1490,7 +1490,7 @@ namespace GeneratedModels
         /// This sample shows how to call DeleteKeyValueAsync with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.DeleteKeyValueAsync("<key>", "<label>", "<apiVersion>", "<syncToken>", "<accept>", null);
         /// 
@@ -1530,7 +1530,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(label, nameof(label));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.DeleteKeyValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.DeleteKeyValue");
             scope.Start();
             try
             {
@@ -1559,7 +1559,7 @@ namespace GeneratedModels
         /// This sample shows how to call DeleteKeyValue with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.DeleteKeyValue("<key>", "<label>", "<apiVersion>");
         /// 
@@ -1576,7 +1576,7 @@ namespace GeneratedModels
         /// This sample shows how to call DeleteKeyValue with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.DeleteKeyValue("<key>", "<label>", "<apiVersion>", "<syncToken>", "<accept>", null);
         /// 
@@ -1616,7 +1616,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(label, nameof(label));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.DeleteKeyValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.DeleteKeyValue");
             scope.Start();
             try
             {
@@ -1640,7 +1640,7 @@ namespace GeneratedModels
         /// <param name="matchConditions"> The content to send as the request conditions of the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual async Task<Response> CheckKeyValueValueAsync(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<global::.Head7ItemsItem> select, string syncToken = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response> CheckKeyValueValueAsync(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<Head7ItemsItem> select, string syncToken = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -1648,7 +1648,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckKeyValueValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckKeyValueValue");
             scope.Start();
             try
             {
@@ -1673,7 +1673,7 @@ namespace GeneratedModels
         /// <param name="matchConditions"> The content to send as the request conditions of the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual Response CheckKeyValueValue(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<global::.Head7ItemsItem> select, string syncToken = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
+        public virtual Response CheckKeyValueValue(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<Head7ItemsItem> select, string syncToken = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -1681,7 +1681,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckKeyValueValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckKeyValueValue");
             scope.Start();
             try
             {
@@ -1712,7 +1712,7 @@ namespace GeneratedModels
         /// This sample shows how to call CheckKeyValueAsync with required parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.CheckKeyValueAsync("<key>", "<label>", "<apiVersion>", "<acceptDatetime>", new Head7ItemsItem[]{null});
         /// Console.WriteLine(response.Status);
@@ -1720,13 +1720,13 @@ namespace GeneratedModels
         /// This sample shows how to call CheckKeyValueAsync with all parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.CheckKeyValueAsync("<key>", "<label>", "<apiVersion>", "<acceptDatetime>", new Head7ItemsItem[]{null}, "<syncToken>", new MatchConditions { IfMatch = "<YOUR_ETAG>" });
         /// Console.WriteLine(response.Status);
         /// ]]></code>
         /// </example>
-        public virtual async Task<Response> CheckKeyValueAsync(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<global::.Head7ItemsItem> select, string syncToken = null, MatchConditions matchConditions = null, RequestContext context = null)
+        public virtual async Task<Response> CheckKeyValueAsync(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<Head7ItemsItem> select, string syncToken = null, MatchConditions matchConditions = null, RequestContext context = null)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -1734,7 +1734,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckKeyValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckKeyValue");
             scope.Start();
             try
             {
@@ -1764,7 +1764,7 @@ namespace GeneratedModels
         /// This sample shows how to call CheckKeyValue with required parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.CheckKeyValue("<key>", "<label>", "<apiVersion>", "<acceptDatetime>", new Head7ItemsItem[]{null});
         /// Console.WriteLine(response.Status);
@@ -1772,13 +1772,13 @@ namespace GeneratedModels
         /// This sample shows how to call CheckKeyValue with all parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.CheckKeyValue("<key>", "<label>", "<apiVersion>", "<acceptDatetime>", new Head7ItemsItem[]{null}, "<syncToken>", new MatchConditions { IfMatch = "<YOUR_ETAG>" });
         /// Console.WriteLine(response.Status);
         /// ]]></code>
         /// </example>
-        public virtual Response CheckKeyValue(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<global::.Head7ItemsItem> select, string syncToken = null, MatchConditions matchConditions = null, RequestContext context = null)
+        public virtual Response CheckKeyValue(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<Head7ItemsItem> select, string syncToken = null, MatchConditions matchConditions = null, RequestContext context = null)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -1786,7 +1786,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckKeyValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckKeyValue");
             scope.Start();
             try
             {
@@ -1810,7 +1810,7 @@ namespace GeneratedModels
         /// <param name="accept"> Accept header. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="name"/>, <paramref name="apiVersion"/>, <paramref name="after"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual async Task<Response<global::.LabelListResult>> GetLabelValuesAsync(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Get5ItemsItem> select, string syncToken = null, string accept = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<LabelListResult>> GetLabelValuesAsync(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<Get5ItemsItem> select, string syncToken = null, string accept = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(name, nameof(name));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
@@ -1818,13 +1818,13 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetLabelValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetLabelValues");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = await GetLabelsAsync(name, apiVersion, after, acceptDatetime, select, syncToken, accept, context).ConfigureAwait(false);
-                return Response.FromValue(global::.LabelListResult.FromResponse(response), response);
+                return Response.FromValue(LabelListResult.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -1843,7 +1843,7 @@ namespace GeneratedModels
         /// <param name="accept"> Accept header. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="name"/>, <paramref name="apiVersion"/>, <paramref name="after"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual Response<global::.LabelListResult> GetLabelValues(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Get5ItemsItem> select, string syncToken = null, string accept = null, CancellationToken cancellationToken = default)
+        public virtual Response<LabelListResult> GetLabelValues(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<Get5ItemsItem> select, string syncToken = null, string accept = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(name, nameof(name));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
@@ -1851,13 +1851,13 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetLabelValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetLabelValues");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = GetLabels(name, apiVersion, after, acceptDatetime, select, syncToken, accept, context);
-                return Response.FromValue(global::.LabelListResult.FromResponse(response), response);
+                return Response.FromValue(LabelListResult.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -1882,7 +1882,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetLabelsAsync with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.GetLabelsAsync("<name>", "<apiVersion>", "<after>", "<acceptDatetime>", new Get5ItemsItem[]{null});
         /// 
@@ -1893,7 +1893,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetLabelsAsync with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.GetLabelsAsync("<name>", "<apiVersion>", "<after>", "<acceptDatetime>", new Get5ItemsItem[]{null}, "<syncToken>", "<accept>");
         /// 
@@ -1919,7 +1919,7 @@ namespace GeneratedModels
         /// </code>
         /// 
         /// </remarks>
-        public virtual async Task<Response> GetLabelsAsync(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Get5ItemsItem> select, string syncToken = null, string accept = null, RequestContext context = null)
+        public virtual async Task<Response> GetLabelsAsync(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<Get5ItemsItem> select, string syncToken = null, string accept = null, RequestContext context = null)
         {
             Argument.AssertNotNull(name, nameof(name));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
@@ -1927,7 +1927,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetLabels");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetLabels");
             scope.Start();
             try
             {
@@ -1957,7 +1957,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetLabels with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.GetLabels("<name>", "<apiVersion>", "<after>", "<acceptDatetime>", new Get5ItemsItem[]{null});
         /// 
@@ -1968,7 +1968,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetLabels with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.GetLabels("<name>", "<apiVersion>", "<after>", "<acceptDatetime>", new Get5ItemsItem[]{null}, "<syncToken>", "<accept>");
         /// 
@@ -1994,7 +1994,7 @@ namespace GeneratedModels
         /// </code>
         /// 
         /// </remarks>
-        public virtual Response GetLabels(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Get5ItemsItem> select, string syncToken = null, string accept = null, RequestContext context = null)
+        public virtual Response GetLabels(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<Get5ItemsItem> select, string syncToken = null, string accept = null, RequestContext context = null)
         {
             Argument.AssertNotNull(name, nameof(name));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
@@ -2002,7 +2002,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetLabels");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetLabels");
             scope.Start();
             try
             {
@@ -2025,7 +2025,7 @@ namespace GeneratedModels
         /// <param name="syncToken"> Used to guarantee real-time consistency between requests. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="name"/>, <paramref name="apiVersion"/>, <paramref name="after"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual async Task<Response> CheckLabelValuesAsync(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Head5ItemsItem> select, string syncToken = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response> CheckLabelValuesAsync(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<Head5ItemsItem> select, string syncToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(name, nameof(name));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
@@ -2033,7 +2033,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckLabelValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckLabelValues");
             scope.Start();
             try
             {
@@ -2057,7 +2057,7 @@ namespace GeneratedModels
         /// <param name="syncToken"> Used to guarantee real-time consistency between requests. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="name"/>, <paramref name="apiVersion"/>, <paramref name="after"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual Response CheckLabelValues(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Head5ItemsItem> select, string syncToken = null, CancellationToken cancellationToken = default)
+        public virtual Response CheckLabelValues(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<Head5ItemsItem> select, string syncToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(name, nameof(name));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
@@ -2065,7 +2065,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckLabelValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckLabelValues");
             scope.Start();
             try
             {
@@ -2095,7 +2095,7 @@ namespace GeneratedModels
         /// This sample shows how to call CheckLabelsAsync with required parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.CheckLabelsAsync("<name>", "<apiVersion>", "<after>", "<acceptDatetime>", new Head5ItemsItem[]{null});
         /// Console.WriteLine(response.Status);
@@ -2103,13 +2103,13 @@ namespace GeneratedModels
         /// This sample shows how to call CheckLabelsAsync with all parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.CheckLabelsAsync("<name>", "<apiVersion>", "<after>", "<acceptDatetime>", new Head5ItemsItem[]{null}, "<syncToken>");
         /// Console.WriteLine(response.Status);
         /// ]]></code>
         /// </example>
-        public virtual async Task<Response> CheckLabelsAsync(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Head5ItemsItem> select, string syncToken = null, RequestContext context = null)
+        public virtual async Task<Response> CheckLabelsAsync(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<Head5ItemsItem> select, string syncToken = null, RequestContext context = null)
         {
             Argument.AssertNotNull(name, nameof(name));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
@@ -2117,7 +2117,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckLabels");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckLabels");
             scope.Start();
             try
             {
@@ -2146,7 +2146,7 @@ namespace GeneratedModels
         /// This sample shows how to call CheckLabels with required parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.CheckLabels("<name>", "<apiVersion>", "<after>", "<acceptDatetime>", new Head5ItemsItem[]{null});
         /// Console.WriteLine(response.Status);
@@ -2154,13 +2154,13 @@ namespace GeneratedModels
         /// This sample shows how to call CheckLabels with all parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.CheckLabels("<name>", "<apiVersion>", "<after>", "<acceptDatetime>", new Head5ItemsItem[]{null}, "<syncToken>");
         /// Console.WriteLine(response.Status);
         /// ]]></code>
         /// </example>
-        public virtual Response CheckLabels(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Head5ItemsItem> select, string syncToken = null, RequestContext context = null)
+        public virtual Response CheckLabels(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<Head5ItemsItem> select, string syncToken = null, RequestContext context = null)
         {
             Argument.AssertNotNull(name, nameof(name));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
@@ -2168,7 +2168,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckLabels");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckLabels");
             scope.Start();
             try
             {
@@ -2191,19 +2191,19 @@ namespace GeneratedModels
         /// <param name="matchConditions"> The content to send as the request conditions of the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/> or <paramref name="apiVersion"/> is null. </exception>
-        public virtual async Task<Response<global::.KeyValue>> PutLockValueAsync(string key, string label, string apiVersion, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<KeyValue>> PutLockValueAsync(string key, string label, string apiVersion, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.PutLockValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.PutLockValue");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = await PutLockAsync(key, label, apiVersion, syncToken, accept, matchConditions, context).ConfigureAwait(false);
-                return Response.FromValue(global::.KeyValue.FromResponse(response), response);
+                return Response.FromValue(KeyValue.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -2221,19 +2221,19 @@ namespace GeneratedModels
         /// <param name="matchConditions"> The content to send as the request conditions of the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/> or <paramref name="apiVersion"/> is null. </exception>
-        public virtual Response<global::.KeyValue> PutLockValue(string key, string label, string apiVersion, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
+        public virtual Response<KeyValue> PutLockValue(string key, string label, string apiVersion, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.PutLockValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.PutLockValue");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = PutLock(key, label, apiVersion, syncToken, accept, matchConditions, context);
-                return Response.FromValue(global::.KeyValue.FromResponse(response), response);
+                return Response.FromValue(KeyValue.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -2257,7 +2257,7 @@ namespace GeneratedModels
         /// This sample shows how to call PutLockAsync with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.PutLockAsync("<key>", "<label>", "<apiVersion>");
         /// 
@@ -2274,7 +2274,7 @@ namespace GeneratedModels
         /// This sample shows how to call PutLockAsync with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.PutLockAsync("<key>", "<label>", "<apiVersion>", "<syncToken>", "<accept>", new MatchConditions { IfMatch = "<YOUR_ETAG>" });
         /// 
@@ -2314,7 +2314,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(label, nameof(label));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.PutLock");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.PutLock");
             scope.Start();
             try
             {
@@ -2343,7 +2343,7 @@ namespace GeneratedModels
         /// This sample shows how to call PutLock with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.PutLock("<key>", "<label>", "<apiVersion>");
         /// 
@@ -2360,7 +2360,7 @@ namespace GeneratedModels
         /// This sample shows how to call PutLock with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.PutLock("<key>", "<label>", "<apiVersion>", "<syncToken>", "<accept>", new MatchConditions { IfMatch = "<YOUR_ETAG>" });
         /// 
@@ -2400,7 +2400,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(label, nameof(label));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.PutLock");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.PutLock");
             scope.Start();
             try
             {
@@ -2423,19 +2423,19 @@ namespace GeneratedModels
         /// <param name="matchConditions"> The content to send as the request conditions of the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/> or <paramref name="apiVersion"/> is null. </exception>
-        public virtual async Task<Response<global::.KeyValue>> DeleteLockValueAsync(string key, string label, string apiVersion, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<KeyValue>> DeleteLockValueAsync(string key, string label, string apiVersion, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.DeleteLockValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.DeleteLockValue");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = await DeleteLockAsync(key, label, apiVersion, syncToken, accept, matchConditions, context).ConfigureAwait(false);
-                return Response.FromValue(global::.KeyValue.FromResponse(response), response);
+                return Response.FromValue(KeyValue.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -2453,19 +2453,19 @@ namespace GeneratedModels
         /// <param name="matchConditions"> The content to send as the request conditions of the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/> or <paramref name="apiVersion"/> is null. </exception>
-        public virtual Response<global::.KeyValue> DeleteLockValue(string key, string label, string apiVersion, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
+        public virtual Response<KeyValue> DeleteLockValue(string key, string label, string apiVersion, string syncToken = null, string accept = null, MatchConditions matchConditions = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.DeleteLockValue");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.DeleteLockValue");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = DeleteLock(key, label, apiVersion, syncToken, accept, matchConditions, context);
-                return Response.FromValue(global::.KeyValue.FromResponse(response), response);
+                return Response.FromValue(KeyValue.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -2489,7 +2489,7 @@ namespace GeneratedModels
         /// This sample shows how to call DeleteLockAsync with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.DeleteLockAsync("<key>", "<label>", "<apiVersion>");
         /// 
@@ -2506,7 +2506,7 @@ namespace GeneratedModels
         /// This sample shows how to call DeleteLockAsync with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.DeleteLockAsync("<key>", "<label>", "<apiVersion>", "<syncToken>", "<accept>", new MatchConditions { IfMatch = "<YOUR_ETAG>" });
         /// 
@@ -2546,7 +2546,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(label, nameof(label));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.DeleteLock");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.DeleteLock");
             scope.Start();
             try
             {
@@ -2575,7 +2575,7 @@ namespace GeneratedModels
         /// This sample shows how to call DeleteLock with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.DeleteLock("<key>", "<label>", "<apiVersion>");
         /// 
@@ -2592,7 +2592,7 @@ namespace GeneratedModels
         /// This sample shows how to call DeleteLock with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.DeleteLock("<key>", "<label>", "<apiVersion>", "<syncToken>", "<accept>", new MatchConditions { IfMatch = "<YOUR_ETAG>" });
         /// 
@@ -2632,7 +2632,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(label, nameof(label));
             Argument.AssertNotNull(apiVersion, nameof(apiVersion));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.DeleteLock");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.DeleteLock");
             scope.Start();
             try
             {
@@ -2657,7 +2657,7 @@ namespace GeneratedModels
         /// <param name="accept"> Accept header. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/>, <paramref name="after"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual async Task<Response<global::.KeyValueListResult>> GetRevisionValuesAsync(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Paths18s2vl1RevisionsGetParameters6SchemaItems> select, string syncToken = null, string accept = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<KeyValueListResult>> GetRevisionValuesAsync(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<Paths18s2vl1RevisionsGetParameters6SchemaItems> select, string syncToken = null, string accept = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -2666,13 +2666,13 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetRevisionValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetRevisionValues");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = await GetRevisionsAsync(key, label, apiVersion, after, acceptDatetime, select, syncToken, accept, context).ConfigureAwait(false);
-                return Response.FromValue(global::.KeyValueListResult.FromResponse(response), response);
+                return Response.FromValue(KeyValueListResult.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -2692,7 +2692,7 @@ namespace GeneratedModels
         /// <param name="accept"> Accept header. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/>, <paramref name="after"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual Response<global::.KeyValueListResult> GetRevisionValues(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Paths18s2vl1RevisionsGetParameters6SchemaItems> select, string syncToken = null, string accept = null, CancellationToken cancellationToken = default)
+        public virtual Response<KeyValueListResult> GetRevisionValues(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<Paths18s2vl1RevisionsGetParameters6SchemaItems> select, string syncToken = null, string accept = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -2701,13 +2701,13 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetRevisionValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetRevisionValues");
             scope.Start();
             try
             {
                 RequestContext context = FromCancellationToken(cancellationToken);
                 Response response = GetRevisions(key, label, apiVersion, after, acceptDatetime, select, syncToken, accept, context);
-                return Response.FromValue(global::.KeyValueListResult.FromResponse(response), response);
+                return Response.FromValue(KeyValueListResult.FromResponse(response), response);
             }
             catch (Exception e)
             {
@@ -2733,7 +2733,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetRevisionsAsync with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.GetRevisionsAsync("<key>", "<label>", "<apiVersion>", "<after>", "<acceptDatetime>", new Paths18s2vl1RevisionsGetParameters6SchemaItems[]{null});
         /// 
@@ -2751,7 +2751,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetRevisionsAsync with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.GetRevisionsAsync("<key>", "<label>", "<apiVersion>", "<after>", "<acceptDatetime>", new Paths18s2vl1RevisionsGetParameters6SchemaItems[]{null}, "<syncToken>", "<accept>");
         /// 
@@ -2791,7 +2791,7 @@ namespace GeneratedModels
         /// </code>
         /// 
         /// </remarks>
-        public virtual async Task<Response> GetRevisionsAsync(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Paths18s2vl1RevisionsGetParameters6SchemaItems> select, string syncToken = null, string accept = null, RequestContext context = null)
+        public virtual async Task<Response> GetRevisionsAsync(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<Paths18s2vl1RevisionsGetParameters6SchemaItems> select, string syncToken = null, string accept = null, RequestContext context = null)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -2800,7 +2800,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetRevisions");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetRevisions");
             scope.Start();
             try
             {
@@ -2831,7 +2831,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetRevisions with required parameters and parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.GetRevisions("<key>", "<label>", "<apiVersion>", "<after>", "<acceptDatetime>", new Paths18s2vl1RevisionsGetParameters6SchemaItems[]{null});
         /// 
@@ -2849,7 +2849,7 @@ namespace GeneratedModels
         /// This sample shows how to call GetRevisions with all parameters, and how to parse the result.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.GetRevisions("<key>", "<label>", "<apiVersion>", "<after>", "<acceptDatetime>", new Paths18s2vl1RevisionsGetParameters6SchemaItems[]{null}, "<syncToken>", "<accept>");
         /// 
@@ -2889,7 +2889,7 @@ namespace GeneratedModels
         /// </code>
         /// 
         /// </remarks>
-        public virtual Response GetRevisions(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Paths18s2vl1RevisionsGetParameters6SchemaItems> select, string syncToken = null, string accept = null, RequestContext context = null)
+        public virtual Response GetRevisions(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<Paths18s2vl1RevisionsGetParameters6SchemaItems> select, string syncToken = null, string accept = null, RequestContext context = null)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -2898,7 +2898,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.GetRevisions");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.GetRevisions");
             scope.Start();
             try
             {
@@ -2922,7 +2922,7 @@ namespace GeneratedModels
         /// <param name="syncToken"> Used to guarantee real-time consistency between requests. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/>, <paramref name="after"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual async Task<Response> CheckRevisionValuesAsync(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.PathsEaaa80RevisionsHeadParameters6SchemaItems> select, string syncToken = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response> CheckRevisionValuesAsync(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<PathsEaaa80RevisionsHeadParameters6SchemaItems> select, string syncToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -2931,7 +2931,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckRevisionValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckRevisionValues");
             scope.Start();
             try
             {
@@ -2956,7 +2956,7 @@ namespace GeneratedModels
         /// <param name="syncToken"> Used to guarantee real-time consistency between requests. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="key"/>, <paramref name="label"/>, <paramref name="apiVersion"/>, <paramref name="after"/>, <paramref name="acceptDatetime"/> or <paramref name="select"/> is null. </exception>
-        public virtual Response CheckRevisionValues(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.PathsEaaa80RevisionsHeadParameters6SchemaItems> select, string syncToken = null, CancellationToken cancellationToken = default)
+        public virtual Response CheckRevisionValues(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<PathsEaaa80RevisionsHeadParameters6SchemaItems> select, string syncToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -2965,7 +2965,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckRevisionValues");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckRevisionValues");
             scope.Start();
             try
             {
@@ -2996,7 +2996,7 @@ namespace GeneratedModels
         /// This sample shows how to call CheckRevisionsAsync with required parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.CheckRevisionsAsync("<key>", "<label>", "<apiVersion>", "<after>", "<acceptDatetime>", new PathsEaaa80RevisionsHeadParameters6SchemaItems[]{null});
         /// Console.WriteLine(response.Status);
@@ -3004,13 +3004,13 @@ namespace GeneratedModels
         /// This sample shows how to call CheckRevisionsAsync with all parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = await client.CheckRevisionsAsync("<key>", "<label>", "<apiVersion>", "<after>", "<acceptDatetime>", new PathsEaaa80RevisionsHeadParameters6SchemaItems[]{null}, "<syncToken>");
         /// Console.WriteLine(response.Status);
         /// ]]></code>
         /// </example>
-        public virtual async Task<Response> CheckRevisionsAsync(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.PathsEaaa80RevisionsHeadParameters6SchemaItems> select, string syncToken = null, RequestContext context = null)
+        public virtual async Task<Response> CheckRevisionsAsync(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<PathsEaaa80RevisionsHeadParameters6SchemaItems> select, string syncToken = null, RequestContext context = null)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -3019,7 +3019,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckRevisions");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckRevisions");
             scope.Start();
             try
             {
@@ -3049,7 +3049,7 @@ namespace GeneratedModels
         /// This sample shows how to call CheckRevisions with required parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.CheckRevisions("<key>", "<label>", "<apiVersion>", "<after>", "<acceptDatetime>", new PathsEaaa80RevisionsHeadParameters6SchemaItems[]{null});
         /// Console.WriteLine(response.Status);
@@ -3057,13 +3057,13 @@ namespace GeneratedModels
         /// This sample shows how to call CheckRevisions with all parameters.
         /// <code><![CDATA[
         /// var endpoint = new Uri("<https://my-service.azure.com>");
-        /// var client = new Client(endpoint);
+        /// var client = new ConfigurationClient(endpoint);
         /// 
         /// Response response = client.CheckRevisions("<key>", "<label>", "<apiVersion>", "<after>", "<acceptDatetime>", new PathsEaaa80RevisionsHeadParameters6SchemaItems[]{null}, "<syncToken>");
         /// Console.WriteLine(response.Status);
         /// ]]></code>
         /// </example>
-        public virtual Response CheckRevisions(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.PathsEaaa80RevisionsHeadParameters6SchemaItems> select, string syncToken = null, RequestContext context = null)
+        public virtual Response CheckRevisions(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<PathsEaaa80RevisionsHeadParameters6SchemaItems> select, string syncToken = null, RequestContext context = null)
         {
             Argument.AssertNotNull(key, nameof(key));
             Argument.AssertNotNull(label, nameof(label));
@@ -3072,7 +3072,7 @@ namespace GeneratedModels
             Argument.AssertNotNull(acceptDatetime, nameof(acceptDatetime));
             Argument.AssertNotNull(select, nameof(select));
 
-            using var scope = ClientDiagnostics.CreateScope("Client.CheckRevisions");
+            using var scope = ClientDiagnostics.CreateScope("ConfigurationClient.CheckRevisions");
             scope.Start();
             try
             {
@@ -3140,7 +3140,7 @@ namespace GeneratedModels
             return message;
         }
 
-        internal HttpMessage CreateGetKeyValuesRequest(string key, string label, string apiVersion, string after, IEnumerable<global::.Get6ItemsItem> select, string syncToken, string acceptDatetime, string accept, RequestContext context)
+        internal HttpMessage CreateGetKeyValuesRequest(string key, string label, string apiVersion, string after, IEnumerable<Get6ItemsItem> select, string syncToken, string acceptDatetime, string accept, RequestContext context)
         {
             var message = _pipeline.CreateMessage(context, ResponseClassifier200);
             var request = message.Request;
@@ -3171,7 +3171,7 @@ namespace GeneratedModels
             return message;
         }
 
-        internal HttpMessage CreateCheckKeyValuesRequest(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Head6ItemsItem> select, string syncToken, RequestContext context)
+        internal HttpMessage CreateCheckKeyValuesRequest(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<Head6ItemsItem> select, string syncToken, RequestContext context)
         {
             var message = _pipeline.CreateMessage(context, ResponseClassifier204);
             var request = message.Request;
@@ -3195,7 +3195,7 @@ namespace GeneratedModels
             return message;
         }
 
-        internal HttpMessage CreateGetKeyValueRequest(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<global::.Get7ItemsItem> select, string syncToken, string accept, MatchConditions matchConditions, RequestContext context)
+        internal HttpMessage CreateGetKeyValueRequest(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<Get7ItemsItem> select, string syncToken, string accept, MatchConditions matchConditions, RequestContext context)
         {
             var message = _pipeline.CreateMessage(context, ResponseClassifier200);
             var request = message.Request;
@@ -3285,7 +3285,7 @@ namespace GeneratedModels
             return message;
         }
 
-        internal HttpMessage CreateCheckKeyValueRequest(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<global::.Head7ItemsItem> select, string syncToken, MatchConditions matchConditions, RequestContext context)
+        internal HttpMessage CreateCheckKeyValueRequest(string key, string label, string apiVersion, string acceptDatetime, IEnumerable<Head7ItemsItem> select, string syncToken, MatchConditions matchConditions, RequestContext context)
         {
             var message = _pipeline.CreateMessage(context, ResponseClassifier204);
             var request = message.Request;
@@ -3312,7 +3312,7 @@ namespace GeneratedModels
             return message;
         }
 
-        internal HttpMessage CreateGetLabelsRequest(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Get5ItemsItem> select, string syncToken, string accept, RequestContext context)
+        internal HttpMessage CreateGetLabelsRequest(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<Get5ItemsItem> select, string syncToken, string accept, RequestContext context)
         {
             var message = _pipeline.CreateMessage(context, ResponseClassifier200);
             var request = message.Request;
@@ -3339,7 +3339,7 @@ namespace GeneratedModels
             return message;
         }
 
-        internal HttpMessage CreateCheckLabelsRequest(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Head5ItemsItem> select, string syncToken, RequestContext context)
+        internal HttpMessage CreateCheckLabelsRequest(string name, string apiVersion, string after, string acceptDatetime, IEnumerable<Head5ItemsItem> select, string syncToken, RequestContext context)
         {
             var message = _pipeline.CreateMessage(context, ResponseClassifier204);
             var request = message.Request;
@@ -3420,7 +3420,7 @@ namespace GeneratedModels
             return message;
         }
 
-        internal HttpMessage CreateGetRevisionsRequest(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.Paths18s2vl1RevisionsGetParameters6SchemaItems> select, string syncToken, string accept, RequestContext context)
+        internal HttpMessage CreateGetRevisionsRequest(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<Paths18s2vl1RevisionsGetParameters6SchemaItems> select, string syncToken, string accept, RequestContext context)
         {
             var message = _pipeline.CreateMessage(context, ResponseClassifier200);
             var request = message.Request;
@@ -3448,7 +3448,7 @@ namespace GeneratedModels
             return message;
         }
 
-        internal HttpMessage CreateCheckRevisionsRequest(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<global::.PathsEaaa80RevisionsHeadParameters6SchemaItems> select, string syncToken, RequestContext context)
+        internal HttpMessage CreateCheckRevisionsRequest(string key, string label, string apiVersion, string after, string acceptDatetime, IEnumerable<PathsEaaa80RevisionsHeadParameters6SchemaItems> select, string syncToken, RequestContext context)
         {
             var message = _pipeline.CreateMessage(context, ResponseClassifier204);
             var request = message.Request;

@@ -9,7 +9,7 @@ using System.Text.Json;
 using Azure;
 using Azure.Core;
 
-namespace
+namespace AppConfiguration
 {
     public partial class Key : IUtf8JsonSerializable
     {
@@ -21,7 +21,7 @@ namespace
             writer.WriteEndObject();
         }
 
-        internal static global::.Key DeserializeKey(JsonElement element)
+        internal static Key DeserializeKey(JsonElement element)
         {
             string name = default;
             foreach (var property in element.EnumerateObject())
@@ -32,7 +32,7 @@ namespace
                     continue;
                 }
             }
-            return new global::.Key(name);
+            return new Key(name);
         }
 
         internal RequestContent ToRequestContent()
@@ -42,7 +42,7 @@ namespace
             return content;
         }
 
-        internal static global::.Key FromResponse(Response response)
+        internal static Key FromResponse(Response response)
         {
             using var document = JsonDocument.Parse(response.Content);
             return DeserializeKey(document.RootElement);
